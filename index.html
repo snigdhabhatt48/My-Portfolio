@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snigdha's Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1E1E2C;
+      color: #F8F9FA;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      transition: background-color 3s ease;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background-color: #24243E;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    #sidebar a {
+      color: #F8F9FA;
+      font-size: 1.2rem;
+      text-decoration: none;
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    #sidebar a:hover {
+      color: #FFB703;
+    }
+    #sidebar h2 {
+      color: #FFB703;
+      margin-bottom: 2rem;
+    }
+
+    /* Main Content */
+    .content {
+      margin-left: 250px;
+      padding: 2rem;
+      width: calc(100% - 250px);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #FFB703;
+    }
+    header p {
+      font-size: 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    /* Cards for Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: linear-gradient(145deg, #2C2C54, #3B3B70);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      color: #F8F9FA;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .project-card h3 {
+      margin-bottom: 1rem;
+      color: #FFB703;
+    }
+    .project-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      padding: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #FFB703;
+      color: #24243E;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .contact-form button:hover {
+      background-color: #F4A261;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #24243E;
+      color: #F8F9FA;
+      margin-top: 3rem;
+      width: 100%;
+    }
+
+    /* Emoji Rating Section */
+    .emoji-rating {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+    .emoji-rating span {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .emoji-rating span:hover {
+      transform: scale(1.2);
+    }
+
+    @media screen and (max-width: 768px) {
+      #sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+      }
+      .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <h2>Snigdha</h2>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <header>
+      <h1>Snigdha's Portfolio</h1>
+      <p>UI/UX Designer & Front-End Developer</p>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm Snigdha, a passionate UI/UX Designer and Front-End Developer based in Bengaluru. I specialize in creating engaging user experiences and responsive web designs.</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p>UI/UX Design, Figma, Sketch, HTML, CSS, JavaScript, React, GitHub</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>Whack-a-Mole Game</h3>
+          <p>A fun and interactive game to test your reflexes.</p>
+        </div>
+        <div class="project-card">
+          <h3>Weather App</h3>
+          <p>A sleek app to check the weather conditions in any city.</p>
+        </div>
+        <div class="project-card">
+          <h3>Fitness Score Website</h3>
+          <p>A website to track and analyze your fitness goals.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <p>Created by Snigdha © 2025</p>
+    <div class="emoji-rating">
+      <span>😄</span>
+      <span>😊</span>
+      <span>😐</span>
+      <span>😟</span>
+    </div>
+  </footer>
+
+  <script>
+    // Color transition effect
+    const colors = ["#1E1E2C", "#24243E", "#FFB703", "#F4A261"];
+    let colorIndex = 0;
+    setInterval(() => {
+      document.body.style.backgroundColor = colors[colorIndex];
+      colorIndex = (colorIndex + 1) % colors.length;
+    }, 3000);
+  </script>
+</body>
+</html>
