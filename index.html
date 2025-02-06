@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snigdha's Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background-color 2s ease;
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      margin: 0;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start;
+      padding: 2rem;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background-color: #3A3A55;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #sidebar a {
+      color: #F0EDEE;
+      font-size: 1.2rem;
+      text-decoration: none;
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+      transition: color 0.3s;
+    }
+
+    #sidebar a:hover {
+      color: #D99326;
+    }
+
+    #sidebar h2 {
+      color: #D926C6;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-family: 'Georgia', serif;
+      color: #266CD9;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      font-family: 'Verdana', sans-serif;
+      color: #26D939;
+      margin-bottom: 1.5rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 3rem;
+      width: 100%;
+      padding: 1rem;
+    }
+
+    .project-card {
+      background: #266CD9;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: #D99326;
+      border-radius: 15px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+    }
+
+    .contact-form button {
+      padding: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #26D939;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #D926C6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #3A3A55;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    .emoji-rating {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+
+    .emoji-rating span {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .emoji-rating span:hover {
+      transform: scale(1.2);
+    }
+
+    .about-photo-block {
+      width: 200px;
+      height: 200px;
+      background-color: #D926C6;
+      border-radius: 100px;
+      margin-right: 2rem;
+      display: inline-block;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <h2>Snigdha</h2>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <section id="about">
+    <div class="about-content">
+      <div class="about-photo-block"></div>
+      <div>
+        <h2>About Me</h2>
+        <p>Hello! I'm Snigdha, a passionate UI/UX Designer and Front-End Developer based in Bengaluru. I specialize in creating engaging user experiences and responsive web designs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p>UI/UX Design, Figma, Sketch, HTML, CSS, JavaScript, React, GitHub</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Whack-a-Mole Game</h3>
+        <p>A fun and interactive game to test your reflexes.</p>
+      </div>
+      <div class="project-card">
+        <h3>Weather App</h3>
+        <p>A sleek app to check the weather conditions in any city.</p>
+      </div>
+      <div class="project-card">
+        <h3>Fitness Score Website</h3>
+        <p>A website to track and analyze your fitness goals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Created by Snigdha © 2025</p>
+    <div class="emoji-rating">
+      <span>😄</span>
+      <span>😊</span>
+      <span>😐</span>
+      <span>😟</span>
+    </div>
+  </footer>
+
+  <script>
+    const colors = ["#266CD9", "#D926C6", "#D99326", "#26D939"];
+    let colorIndex = 0;
+    setInterval(() => {
+      document.body.style.backgroundColor = colors[colorIndex];
+      colorIndex = (colorIndex + 1) % colors.length;
+    }, 2000);
+  </script>
+</body>
+</html>
