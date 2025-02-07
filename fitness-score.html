@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Score Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: #26a69a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #00796b;
+    }
+
+    #result-container {
+      background: #e0f7fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      margin-top: 2rem;
+      display: none;
+    }
+
+    h2 {
+      color: #00796b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fitness Score Calculator</h1>
+  </header>
+
+  <main>
+    <form id="fitness-form">
+      <label for="age">Age:</label>
+      <input type="number" id="age" placeholder="Enter your age" required>
+
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" placeholder="Enter your weight" required>
+
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" placeholder="Enter your height" required>
+
+      <label for="heart-rate">Resting Heart Rate (bpm):</label>
+      <input type="number" id="heart-rate" placeholder="Enter your heart rate" required>
+
+      <label for="activity">Activity Level:</label>
+      <select id="activity">
+        <option value="1">Sedentary (little or no exercise)</option>
+        <option value="2">Lightly active (light exercise)</option>
+        <option value="3">Moderately active (moderate exercise)</option>
+        <option value="4">Very active (hard exercise)</option>
+      </select>
+
+      <button type="button" id="calculate-btn">Calculate Score</button>
+    </form>
+
+    <div id="result-container">
+      <h2>Your Fitness Score:</h2>
+      <p id="fitness-score">-</p>
+      <p id="recommendation"></p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("calculate-btn").addEventListener("click", function () {
+      const age = parseInt(document.getElementById("age").value);
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value);
+      const heartRate = parseInt(document.getElementById("heart-rate").value);
+      const activityLevel = parseInt(document.getElementById("activity").value);
+
+      if (isNaN(age) || isNaN(weight) || isNaN(height) || isNaN(heartRate)) {
+        alert("Please fill in all fields correctly.");
+        return;
+      }
+
+      // Basic Fitness Score Calculation (BMI-based)
+      const bmi = weight / ((height / 100) ** 2);
+      let fitnessScore = 100 - (Math.abs(bmi - 22) * 2) - (heartRate / 2);
+
+      // Adjust score by activity level
+      fitnessScore += activityLevel * 5;
+
+      // Ensure the score stays in a reasonable range
+      fitnessScore = Math.max(0, Math.min(100, Math.round(fitnessScore)));
+
+      // Show result
+      const resultContainer = document.getElementById("result-container");
+      resultContainer.style.display = "block";
+
+      document.getElementById("fitness-score").textContent = fitnessScore;
+
+      let recommendation = "Keep up the great work!";
+      if (fitnessScore < 40) {
+        recommendation = "Consider increasing your physical activity and watching your diet.";
+      } else if (fitnessScore < 70) {
+        recommendation = "You're doing well! Keep maintaining a healthy lifestyle.";
+      }
+
+      document.getElementById("recommendation").textContent = recommendation;
+    });
+  </script>
+</body>
+</html>
