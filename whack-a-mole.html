@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whack-a-Mole Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #d4edda;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #4caf50;
+    }
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 15px;
+      margin: 50px auto;
+      max-width: 340px;
+    }
+    .hole {
+      width: 100px;
+      height: 100px;
+      background-color: #8c8c8c;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+    }
+    .mole {
+      width: 80px;
+      height: 80px;
+      background-color: brown;
+      border-radius: 50%;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Whack-a-Mole Game</h1>
+  <p>Click the mole to score points!</p>
+  <div id="game-board"></div>
+
+  <script>
+    const board = document.getElementById('game-board');
+    const numHoles = 9;
+    let score = 0;
+
+    // Create game board
+    for (let i = 0; i < numHoles; i++) {
+      const hole = document.createElement('div');
+      hole.classList.add('hole');
+      const mole = document.createElement('div');
+      mole.classList.add('mole');
+      hole.appendChild(mole);
+      board.appendChild(hole);
+    }
+
+    function showMole() {
+      const holes = document.querySelectorAll('.hole');
+      const randomHole = holes[Math.floor(Math.random() * holes.length)];
+      const mole = randomHole.querySelector('.mole');
+      mole.style.display = 'block';
+
+      setTimeout(() => {
+        mole.style.display = 'none';
+      }, 800);
+    }
+
+    setInterval(showMole, 1000);
+
+    document.addEventListener('click', (event) => {
+      if (event.target.classList.contains('mole')) {
+        score++;
+        alert(`Whack! Your score: ${score}`);
+        event.target.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
