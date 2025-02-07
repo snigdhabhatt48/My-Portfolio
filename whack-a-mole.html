@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whack-a-Mole Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: #333;
+    }
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 10px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+    .hole {
+      width: 100px;
+      height: 100px;
+      background-color: #8fbc8f;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+    }
+    .mole {
+      width: 60px;
+      height: 60px;
+      background-color: #654321;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: none;
+    }
+    #score-board {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #4682b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #5b9bd5;
+    }
+    #end-button {
+      background-color: #ff4c4c;
+      margin-left: 10px;
+    }
+    #end-button:hover {
+      background-color: #ff6666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Whack-a-Mole Game</h1>
+  <button id="start-button">Start Game</button>
+  <button id="end-button">End Game</button>
+  <div id="score-board">Score: 0</div>
+  <div id="game-board"></div>
+
+  <script>
+    const board = document.getElementById('game-board');
+    const startButton = document.getElementById('start-button');
+    const endButton = document.getElementById('end-button');
+    const scoreBoard = document.getElementById('score-board');
+
+    let score = 0;
+    let moleTimeout;
+    let gameInterval;
+
+    // Create game holes
+    for (let i = 0; i < 9; i++) {
+      const hole = document.createElement('div');
+      hole.classList.add('hole');
+      const mole = document.createElement('div');
+      mole.classList.add('mole');
+      hole.appendChild(mole);
+      board.appendChild(hole);
+    }
+
+    const holes = document.querySelectorAll('.hole');
+
+    function showRandomMole() {
+      hideAllMoles();
+      const randomHole = holes[Math.floor(Math.random() * holes.length)];
+      const mole = randomHole.querySelector('.mole');
+      mole.style.display = 'block';
+
+      moleTimeout = setTimeout(() => {
+        mole.style.display = 'none';
+      }, 1000); // Mole disappears after 1 second
+    }
+
+    function hideAllMoles() {
+      holes.forEach(hole => {
+        hole.querySelector('.mole').style.display = 'none';
+      });
+    }
+
+    function whackMole(event) {
+      if (event.target.classList.contains('mole')) {
+        score++;
+        scoreBoard.textContent = `Score: ${score}`;
+        event.target.style.display = 'none';
+      }
+    }
+
+    function startGame() {
+      score = 0;
+      scoreBoard.textContent = 'Score: 0';
+      startButton.disabled = true;
+      endButton.disabled = false;
+
+      gameInterval = setInterval(showRandomMole, 1000);
+
+      setTimeout(() => {
+        clearInterval(gameInterval);
+        startButton.disabled = false;
+        endButton.disabled = true;
+        alert(`Game over! Your final score is: ${score}`);
+      }, 30000); // Game lasts for 30 seconds
+    }
+
+    function endGame() {
+      clearInterval(gameInterval);
+      clearTimeout(moleTimeout);
+      hideAllMoles();
+      startButton.disabled = false;
+      endButton.disabled = true;
+      alert(`Game ended early! Your final score is: ${score}`);
+    }
+
+    board.addEventListener('click', whackMole);
+    startButton.addEventListener('click', startGame);
+    endButton.addEventListener('click', endGame);
+  </script>
+</body>
+</html>
