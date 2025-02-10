@@ -1,49 +1,63 @@
-// Theme toggle functionality
-const themeToggleButton = document.querySelector(".theme-toggle");
-const body = document.body;
-
-// Theme toggle event listener
-themeToggleButton.addEventListener("click", () => {
-  body.classList.toggle("dark-theme");
+// Smooth scrolling for navigation links
+const navLinks = document.querySelectorAll("nav ul li a");
+navLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const targetId = link.getAttribute("href").slice(1);
+    const targetSection = document.getElementById(targetId);
+    targetSection.scrollIntoView({ behavior: "smooth" });
+  });
 });
 
-// Floating WhatsApp Button scroll visibility
-const whatsappButton = document.querySelector(".whatsapp-button");
+// Theme toggling functionality
+const themeToggleBtn = document.getElementById("theme-toggle");
+let isDarkMode = false;
+
+function toggleTheme() {
+  document.body.classList.toggle("dark-theme", isDarkMode);
+  themeToggleBtn.textContent = isDarkMode ? "Light Mode" : "Dark Mode";
+  isDarkMode = !isDarkMode;
+}
+
+themeToggleBtn.addEventListener("click", toggleTheme);
+
+// Show/hide the floating WhatsApp button based on scroll position
+const whatsappButton = document.querySelector(".whatsapp-btn");
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    whatsappButton.style.display = "block";
+  if (window.scrollY > 300) {
+    whatsappButton.classList.add("visible");
   } else {
-    whatsappButton.style.display = "none";
+    whatsappButton.classList.remove("visible");
   }
 });
 
-// Contact form submission handler
+// Handle form submission
 const contactForm = document.querySelector(".contact-form");
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault(); // Prevent actual form submission
+contactForm.addEventListener("submit", e => {
+  e.preventDefault();
   alert("Thank you for reaching out! I'll get back to you soon.");
   contactForm.reset();
 });
 
-// Social media icon hover effects
+// Animate project cards on scroll
+const projectCards = document.querySelectorAll(".project-card");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("fade-in");
+    }
+  });
+}, { threshold: 0.5 });
+
+projectCards.forEach(card => observer.observe(card));
+
+// Social media hover animations
 const socialIcons = document.querySelectorAll(".social-icons a");
-socialIcons.forEach((icon) => {
+socialIcons.forEach(icon => {
   icon.addEventListener("mouseover", () => {
     icon.style.transform = "scale(1.2)";
   });
   icon.addEventListener("mouseout", () => {
     icon.style.transform = "scale(1)";
-  });
-});
-
-// Smooth scrolling for anchor links
-const navLinks = document.querySelectorAll("nav a");
-navLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-    const targetId = link.getAttribute("href");
-    document.querySelector(targetId).scrollIntoView({
-      behavior: "smooth"
-    });
   });
 });
