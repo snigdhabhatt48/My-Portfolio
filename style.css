@@ -21,7 +21,7 @@ body {
   left: 0;
   width: 250px;
   height: 100vh;
-  background: #050336;
+  background: #6B41BE;
   color: white;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@ body {
 #sidebar h2 {
   margin-bottom: 2rem;
   font-size: 1.8rem;
-  color: #FFD700;
+  color: #94BE41;
 }
 
 #sidebar nav {
@@ -50,7 +50,7 @@ body {
 }
 
 #sidebar a:hover {
-  color: #ff6a00;
+  color: #94BE41;
 }
 
 /* Responsive Sidebar */
@@ -95,7 +95,7 @@ section {
 }
 
 #about {
-  background: linear-gradient(135deg, #050336, #0A0567);
+  background: linear-gradient(135deg, #6B41BE, #94BE41);
   color: white;
 }
 
@@ -121,7 +121,7 @@ section {
 
 #about h2 {
   font-size: 2.5rem;
-  color: #FFD700;
+  color: #94BE41;
   margin-bottom: 1rem;
 }
 
@@ -131,7 +131,7 @@ section {
 }
 
 footer {
-  background-color: #050336;
+  background-color: #6B41BE;
   color: white;
   padding: 1.5rem;
   text-align: center;
@@ -142,7 +142,7 @@ footer {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  background: #0A0567;
+  background: #94BE41;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -161,19 +161,28 @@ footer {
 /* Projects Section */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
   padding: 2rem;
 }
 
 .project-card {
-  background: linear-gradient(135deg, #050336, #0A0567);
-  padding: 2rem;
+  background: linear-gradient(135deg, #6B41BE, #94BE41);
+  padding: 1.5rem;
   border-radius: 15px;
   color: white;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  overflow: hidden;
+}
+
+.project-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .project-card:hover {
@@ -182,8 +191,8 @@ footer {
 }
 
 .project-card button {
-  background-color: #FFD700;
-  color: #050336;
+  background-color: #94BE41;
+  color: #6B41BE;
   border: none;
   padding: 0.8rem 1.2rem;
   font-size: 1rem;
@@ -202,7 +211,7 @@ footer {
   flex-direction: column;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #0A0567;
+  background-color: #6B41BE;
   border-radius: 10px;
   color: white;
 }
@@ -217,10 +226,10 @@ footer {
 }
 
 .contact-form button {
-  background-color: #FFD700;
+  background-color: #94BE41;
   padding: 1rem;
   border: none;
-  color: #050336;
+  color: #6B41BE;
   font-size: 1.1rem;
   cursor: pointer;
   border-radius: 5px;
@@ -242,4 +251,3 @@ footer {
     grid-template-columns: 1fr;
   }
 }
-
