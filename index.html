@@ -3,65 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Homepage</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Portfolio Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <aside>
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('about')">About</button>
-    <button onclick="showPage('skills')">Skills</button>
-    <button onclick="showPage('projects')">Projects</button>
-    <button onclick="showPage('contact')">Contact Me</button>
-    <button onclick="changeTheme()">Change Theme</button>
+    <h2>Snigdha Bhattacharjee</h2>
+    <nav>
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('about')">About</button>
+      <button onclick="showPage('skills')">Skills</button>
+      <button onclick="showPage('projects')">Projects</button>
+      <button onclick="showPage('contact')">Contact Me</button>
+    </nav>
   </aside>
-  <main id="content" class="theme-blue">
+
+  <button class="theme-button" onclick="changeTheme()">
+    <i class="fas fa-palette"></i> Change Theme
+  </button>
+
+  <main id="content">
     <section id="home" class="page slide-in">
       <h1>Welcome to My Portfolio</h1>
-      <p>I am a passionate UI/UX designer and front-end developer.</p>
+      <p>Explore my work and skills as a UI/UX designer and front-end developer.</p>
     </section>
+
     <section id="about" class="page hidden">
       <h1>About Me</h1>
-      <p>I am a Bangalore-based UI/UX designer and developer, enthusiastic about creating meaningful user experiences and interactive front-end designs.</p>
+      <p>I am a passionate UI/UX designer and front-end developer with a love for crafting intuitive user experiences.</p>
     </section>
+
     <section id="skills" class="page hidden">
-      <h1>Skills</h1>
-      <ul>
-        <li>UI/UX Design: Wireframing, Prototyping, Color Theory</li>
-        <li>Front-End Development: HTML, CSS, JavaScript</li>
-        <li>Tools: Figma, Framer, Tailwind CSS</li>
-      </ul>
+      <h1>My Skills</h1>
+      <div id="skills-content" class="skills-container">
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <p>Front-End Development</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-paint-brush"></i>
+          <p>UI/UX Design</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-mobile-alt"></i>
+          <p>Responsive Design</p>
+        </div>
+      </div>
     </section>
+
     <section id="projects" class="page hidden">
-      <h1>Projects</h1>
-      <p>Explore my creative and technical work including interactive designs.</p>
+      <h1>My Projects</h1>
+      <div id="projects-content" class="projects-container">
+        <div class="project-card">
+          <h3>Game Project 1</h3>
+          <button onclick="window.open('https://example.com', '_blank')">Play Now</button>
+        </div>
+        <div class="project-card">
+          <h3>Game Project 2</h3>
+          <button onclick="window.open('https://example.com', '_blank')">Play Now</button>
+        </div>
+        <div class="project-card">
+          <h3>Game Project 3</h3>
+          <button onclick="window.open('https://example.com', '_blank')">Play Now</button>
+        </div>
+        <div class="project-card">
+          <h3>Game Project 4</h3>
+          <button onclick="window.open('https://example.com', '_blank')">Play Now</button>
+        </div>
+      </div>
     </section>
+
     <section id="contact" class="page hidden">
       <h1>Contact Me</h1>
-      <p>Feel free to reach out for collaborations or freelance opportunities.</p>
+      <form action="#" method="post" class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+        
+        <button type="submit">Send Message</button>
+      </form>
     </section>
   </main>
 
-  <script>
-    let currentThemeIndex = 0;
-    const themes = ['theme-blue', 'theme-green', 'theme-purple', 'theme-red'];
-
-    function showPage(pageId) {
-      document.querySelectorAll('section.page').forEach(section => {
-        section.classList.add('hidden');
-        section.classList.remove('slide-in');
-      });
-      const targetPage = document.getElementById(pageId);
-      targetPage.classList.remove('hidden');
-      targetPage.classList.add('slide-in');
-    }
-
-    function changeTheme() {
-      const main = document.getElementById('content');
-      main.classList.remove(...themes);
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      main.classList.add(themes[currentThemeIndex]);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
