@@ -1,57 +1,47 @@
-let currentThemeIndex = 0;
-const themes = ['theme-blue', 'theme-green', 'theme-purple', 'theme-red', 'theme-dark', 'theme-light'];
-
-// Function to show specific page section with animation
+// Script to handle page navigation and transitions
 function showPage(pageId) {
-  document.querySelectorAll('section.page').forEach(section => {
-    section.classList.add('hidden');
-    section.classList.remove('slide-in');
-  });
-  const targetPage = document.getElementById(pageId);
-  targetPage.classList.remove('hidden');
-  targetPage.classList.add('slide-in');
-  animatePage(targetPage);
-}
-
-// Function to change theme color
-function changeTheme() {
-  const main = document.getElementById('content');
-  main.classList.remove(...themes);
-  currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-  main.classList.add(themes[currentThemeIndex]);
-  applyThemeFeedback();
-}
-
-// Apply feedback when changing theme
-function applyThemeFeedback() {
-  const body = document.querySelector('body');
-  body.style.transition = 'background-color 0.5s, color 0.5s';
-}
-
-// Animation effect for pages
-function animatePage(targetPage) {
-  targetPage.style.opacity = 0;
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(page => page.classList.add('hidden'));
+  document.getElementById(pageId).classList.remove('hidden');
+  document.getElementById(pageId).classList.add('slide-in');
   setTimeout(() => {
-    targetPage.style.transition = 'opacity 0.6s ease';
-    targetPage.style.opacity = 1;
-  }, 50);
+    pages.forEach(page => page.classList.remove('slide-in'));
+  }, 500);
 }
 
-// Navigation button hover effects
-function setupNavigationHoverEffects() {
-  const buttons = document.querySelectorAll('aside button');
-  buttons.forEach(button => {
-    button.addEventListener('mouseover', () => {
-      button.style.backgroundColor = '#666';
-      button.style.transform = 'scale(1.05)';
-      button.style.transition = 'transform 0.2s, background-color 0.2s';
-    });
-    button.addEventListener('mouseout', () => {
-      button.style.backgroundColor = '#444';
-      button.style.transform = 'scale(1)';
-    });
+// Theme changer
+function changeTheme() {
+  document.body.classList.toggle('dark-theme');
+  const themeButtonIcon = document.querySelector('.theme-button i');
+  if (document.body.classList.contains('dark-theme')) {
+    themeButtonIcon.className = 'fas fa-sun';
+  } else {
+    themeButtonIcon.className = 'fas fa-moon';
+  }
+}
+
+// Initialize contact form submission handling
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for reaching out! I will get back to you soon.');
+    contactForm.reset();
   });
 }
 
-// Initialize navigation hover effects
-setupNavigationHoverEffects();
+// Add dark theme class toggle in CSS
+if (!document.querySelector('style[data-theme-toggle]')) {
+  const style = document.createElement('style');
+  style.dataset.themeToggle = true;
+  style.textContent = `
+    body.dark-theme {
+      background-color: #333;
+      color: white;
+    }
+    aside.dark-theme {
+      background-color: #222;
+    }
+  `;
+  document.head.appendChild(style);
+}
