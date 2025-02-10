@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f4f9f9;
+  background-color: #E03E00;
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
@@ -89,7 +89,7 @@ header nav ul li a:hover {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit minmax(280px, 1fr));
   gap: 2rem;
 }
 
