@@ -70,10 +70,17 @@ nav button {
   width: 100%;
   font-size: 1rem;
   transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 nav button:hover {
   background-color: #555;
+}
+
+nav button i {
+  font-size: 1.2rem;
 }
 
 main {
