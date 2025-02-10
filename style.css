@@ -31,7 +31,7 @@ header {
   cursor: pointer;
   border-radius: 25px;
   display: flex;
-  align-items: center;
+  align-items: right;
   gap: 10px;
 }
 
@@ -46,7 +46,7 @@ aside {
   padding: 20px;
   width: 200px;
   height: 100%;
-  position: fixed;
+  position: right;
   top: 0;
   left: 0;
   display: flex;
