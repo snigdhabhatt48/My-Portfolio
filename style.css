@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Basic Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,179 +6,90 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #FFF3E0;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background-color: #f0f0f0;
   color: #333;
-  overflow-x: hidden;
-  transition: all 0.3s;
 }
 
-header {
+aside {
+  width: 25%;
+  background-color: #333;
+  color: white;
+  padding: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #E03E00;
-  padding: 1rem 2rem;
+  flex-direction: column;
+  gap: 15px;
+}
+
+aside button {
+  background: #444;
   color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #FF5514;
-}
-
-.whatsapp-btn {
-  background-color: #FF5514;
-  color: white;
-  padding: 0.6rem 1rem;
   border: none;
-  border-radius: 5px;
+  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  text-align: left;
 }
 
-.whatsapp-btn:hover {
-  background-color: white;
-  color: #E03E00;
-  border: 1px solid #E03E00;
+aside button:hover {
+  background: #555;
 }
 
 main {
-  padding: 2rem 1rem;
-}
-
-section {
-  margin-bottom: 2rem;
-}
-
-h2 {
-  color: #E03E00;
-  margin-bottom: 1rem;
-}
-
-/* Projects Section */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem 0;
-}
-
-.project-card {
-  background-color: #FF5514;
-  padding: 2rem;
-  border-radius: 15px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.project-card button {
-  background-color: white;
-  color: #E03E00;
-  border: none;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
+  width: 75%;
+  padding: 20px;
   transition: background-color 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
-.project-card button:hover {
-  background-color: #E03E00;
-  color: white;
+.page {
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(100%);
+  opacity: 0;
 }
 
-/* Contact Section */
-.contact-form {
-  background-color: #E03E00;
-  padding: 2rem;
-  border-radius: 10px;
-  color: white;
-  max-width: 500px;
-  margin: 0 auto;
+.page.slide-in {
+  transform: translateX(0);
+  opacity: 1;
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+.hidden {
+  display: none;
 }
 
-.contact-form button {
-  background-color: #FF5514;
-  padding: 1rem;
-  border: none;
-  color: white;
-  font-size: 1.1rem;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+.theme-blue {
+  background-color: #e0f7fa;
 }
 
-.contact-form button:hover {
-  background-color: white;
-  color: #E03E00;
+.theme-green {
+  background-color: #e8f5e9;
 }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+.theme-purple {
+  background-color: #f3e5f5;
 }
 
-.social-icons a {
-  color: #FF5514;
+.theme-red {
+  background-color: #ffebee;
+}
+
+h1 {
   font-size: 2rem;
-  transition: color 0.3s;
 }
 
-.social-icons a:hover {
-  color: white;
+p {
+  margin-top: 10px;
+  font-size: 1rem;
 }
 
-/* Page Slide-in Animation */
-section {
-  animation: slide-in 0.8s ease forwards;
+ul {
+  margin-top: 10px;
+  padding-left: 20px;
 }
 
-@keyframes slide-in {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+ul li {
+  list-style-type: disc;
+  margin-bottom: 5px;
 }
