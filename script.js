@@ -1,31 +1,49 @@
 // Theme toggle functionality
-const themeToggle = document.querySelector('.theme-toggle');
-let darkMode = false;
+const themeToggleButton = document.querySelector(".theme-toggle");
+const body = document.body;
 
-themeToggle.addEventListener('click', () => {
-  darkMode = !darkMode;
-  if (darkMode) {
-    document.documentElement.style.setProperty('--bg-color', '#050336');
-    document.documentElement.style.setProperty('--text-color', 'white');
+// Theme toggle event listener
+themeToggleButton.addEventListener("click", () => {
+  body.classList.toggle("dark-theme");
+});
+
+// Floating WhatsApp Button scroll visibility
+const whatsappButton = document.querySelector(".whatsapp-button");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    whatsappButton.style.display = "block";
   } else {
-    document.documentElement.style.setProperty('--bg-color', '#f9f9f9');
-    document.documentElement.style.setProperty('--text-color', '#333');
+    whatsappButton.style.display = "none";
   }
 });
 
-// Contact form submission handling
-const contactForm = document.querySelector('.contact-form');
+// Contact form submission handler
+const contactForm = document.querySelector(".contact-form");
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault(); // Prevent actual form submission
+  alert("Thank you for reaching out! I'll get back to you soon.");
+  contactForm.reset();
+});
 
-contactForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const name = contactForm.querySelector('input[type="text"]').value;
-  const email = contactForm.querySelector('input[type="email"]').value;
-  const message = contactForm.querySelector('textarea').value;
+// Social media icon hover effects
+const socialIcons = document.querySelectorAll(".social-icons a");
+socialIcons.forEach((icon) => {
+  icon.addEventListener("mouseover", () => {
+    icon.style.transform = "scale(1.2)";
+  });
+  icon.addEventListener("mouseout", () => {
+    icon.style.transform = "scale(1)";
+  });
+});
 
-  if (name && email && message) {
-    alert(`Thank you, ${name}! Your message has been sent.`);
-    contactForm.reset();
-  } else {
-    alert('Please fill out all fields before submitting.');
-  }
+// Smooth scrolling for anchor links
+const navLinks = document.querySelectorAll("nav a");
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const targetId = link.getAttribute("href");
+    document.querySelector(targetId).scrollIntoView({
+      behavior: "smooth"
+    });
+  });
 });
