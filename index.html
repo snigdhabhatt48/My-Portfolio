@@ -3,102 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snigdha's Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <title>Portfolio Homepage</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">Snigdha's Portfolio</h1>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#designs">Designs</a></li>
-        <li><a href="#contact">Contact Me</a></li>
+  <aside>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('skills')">Skills</button>
+    <button onclick="showPage('projects')">Projects</button>
+    <button onclick="showPage('contact')">Contact Me</button>
+    <button onclick="changeTheme()">Change Theme</button>
+  </aside>
+  <main id="content" class="theme-blue">
+    <section id="home" class="page slide-in">
+      <h1>Welcome to My Portfolio</h1>
+      <p>I am a passionate UI/UX designer and front-end developer.</p>
+    </section>
+    <section id="about" class="page hidden">
+      <h1>About Me</h1>
+      <p>I am a Bangalore-based UI/UX designer and developer, enthusiastic about creating meaningful user experiences and interactive front-end designs.</p>
+    </section>
+    <section id="skills" class="page hidden">
+      <h1>Skills</h1>
+      <ul>
+        <li>UI/UX Design: Wireframing, Prototyping, Color Theory</li>
+        <li>Front-End Development: HTML, CSS, JavaScript</li>
+        <li>Tools: Figma, Framer, Tailwind CSS</li>
       </ul>
-      <a href="https://wa.me/yourphonenumber" target="_blank" class="whatsapp-btn">WhatsApp Me</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <h2>Welcome to My Portfolio</h2>
-      <p>I am a passionate Front-End Developer & UI/UX Designer based in Bengaluru.</p>
     </section>
-
-    <section id="projects">
-      <h2>My Projects</h2>
-      <div class="projects-container">
-        <div class="project-card">
-          <h3>Whack-a-Mole Game</h3>
-          <p>A fun and interactive game to test your reflexes.</p>
-        </div>
-        <div class="project-card">
-          <h3>Tile Tango Game</h3>
-          <p>Slide, swap, and solve your way to victory in this mind-bending puzzle adventure!</p>
-        </div>
-        <div class="project-card">
-          <h3>Fitness Score Tracker</h3>
-          <p>Track and analyze your fitness goals easily.</p>
-        </div>
-        <div class="project-card">
-          <h3>Recipe Finder</h3>
-          <p>An app to search and save delicious recipes.</p>
-        </div>
-        <div class="project-card">
-          <h3>Weather Dashboard</h3>
-          <p>Get real-time weather updates at your fingertips.</p>
-        </div>
-        <div class="project-card">
-          <h3>Expense Tracker</h3>
-          <p>Manage your finances effortlessly with this app.</p>
-        </div>
-        <div class="project-card">
-          <h3>Travel Planner</h3>
-          <p>Plan your trips with ease and efficiency.</p>
-        </div>
-        <div class="project-card">
-          <h3>Task Manager</h3>
-          <p>Organize your tasks and increase productivity.</p>
-        </div>
-      </div>
+    <section id="projects" class="page hidden">
+      <h1>Projects</h1>
+      <p>Explore my creative and technical work including interactive designs.</p>
     </section>
-
-    <section id="designs">
-      <h2>Designs</h2>
-      <p>Coming soon! Stay tuned for my UI/UX design projects.</p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-
-      <div class="social-links">
-        <h3>Connect with me:</h3>
-        <a href="https://wa.me/yourphonenumber" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
-        </a>
-        <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn">
-        </a>
-        <a href="https://www.behance.net/yourprofile" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/behance.png" alt="Behance">
-        </a>
-        <a href="https://github.com/yourusername" target="_blank">
-          <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub">
-        </a>
-      </div>
+    <section id="contact" class="page hidden">
+      <h1>Contact Me</h1>
+      <p>Feel free to reach out for collaborations or freelance opportunities.</p>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Snigdha. All rights reserved.</p>
-  </footer>
+  <script>
+    let currentThemeIndex = 0;
+    const themes = ['theme-blue', 'theme-green', 'theme-purple', 'theme-red'];
+
+    function showPage(pageId) {
+      document.querySelectorAll('section.page').forEach(section => {
+        section.classList.add('hidden');
+        section.classList.remove('slide-in');
+      });
+      const targetPage = document.getElementById(pageId);
+      targetPage.classList.remove('hidden');
+      targetPage.classList.add('slide-in');
+    }
+
+    function changeTheme() {
+      const main = document.getElementById('content');
+      main.classList.remove(...themes);
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      main.classList.add(themes[currentThemeIndex]);
+    }
+  </script>
 </body>
 </html>
