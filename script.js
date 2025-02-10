@@ -1,63 +1,57 @@
-// Smooth scrolling for navigation links
-const navLinks = document.querySelectorAll("nav ul li a");
-navLinks.forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const targetId = link.getAttribute("href").slice(1);
-    const targetSection = document.getElementById(targetId);
-    targetSection.scrollIntoView({ behavior: "smooth" });
+let currentThemeIndex = 0;
+const themes = ['theme-blue', 'theme-green', 'theme-purple', 'theme-red', 'theme-dark', 'theme-light'];
+
+// Function to show specific page section with animation
+function showPage(pageId) {
+  document.querySelectorAll('section.page').forEach(section => {
+    section.classList.add('hidden');
+    section.classList.remove('slide-in');
   });
-});
-
-// Theme toggling functionality
-const themeToggleBtn = document.getElementById("theme-toggle");
-let isDarkMode = false;
-
-function toggleTheme() {
-  document.body.classList.toggle("dark-theme", isDarkMode);
-  themeToggleBtn.textContent = isDarkMode ? "Light Mode" : "Dark Mode";
-  isDarkMode = !isDarkMode;
+  const targetPage = document.getElementById(pageId);
+  targetPage.classList.remove('hidden');
+  targetPage.classList.add('slide-in');
+  animatePage(targetPage);
 }
 
-themeToggleBtn.addEventListener("click", toggleTheme);
+// Function to change theme color
+function changeTheme() {
+  const main = document.getElementById('content');
+  main.classList.remove(...themes);
+  currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+  main.classList.add(themes[currentThemeIndex]);
+  applyThemeFeedback();
+}
 
-// Show/hide the floating WhatsApp button based on scroll position
-const whatsappButton = document.querySelector(".whatsapp-btn");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    whatsappButton.classList.add("visible");
-  } else {
-    whatsappButton.classList.remove("visible");
-  }
-});
+// Apply feedback when changing theme
+function applyThemeFeedback() {
+  const body = document.querySelector('body');
+  body.style.transition = 'background-color 0.5s, color 0.5s';
+}
 
-// Handle form submission
-const contactForm = document.querySelector(".contact-form");
-contactForm.addEventListener("submit", e => {
-  e.preventDefault();
-  alert("Thank you for reaching out! I'll get back to you soon.");
-  contactForm.reset();
-});
+// Animation effect for pages
+function animatePage(targetPage) {
+  targetPage.style.opacity = 0;
+  setTimeout(() => {
+    targetPage.style.transition = 'opacity 0.6s ease';
+    targetPage.style.opacity = 1;
+  }, 50);
+}
 
-// Animate project cards on scroll
-const projectCards = document.querySelectorAll(".project-card");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("fade-in");
-    }
+// Navigation button hover effects
+function setupNavigationHoverEffects() {
+  const buttons = document.querySelectorAll('aside button');
+  buttons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+      button.style.backgroundColor = '#666';
+      button.style.transform = 'scale(1.05)';
+      button.style.transition = 'transform 0.2s, background-color 0.2s';
+    });
+    button.addEventListener('mouseout', () => {
+      button.style.backgroundColor = '#444';
+      button.style.transform = 'scale(1)';
+    });
   });
-}, { threshold: 0.5 });
+}
 
-projectCards.forEach(card => observer.observe(card));
-
-// Social media hover animations
-const socialIcons = document.querySelectorAll(".social-icons a");
-socialIcons.forEach(icon => {
-  icon.addEventListener("mouseover", () => {
-    icon.style.transform = "scale(1.2)";
-  });
-  icon.addEventListener("mouseout", () => {
-    icon.style.transform = "scale(1)";
-  });
-});
+// Initialize navigation hover effects
+setupNavigationHoverEffects();
