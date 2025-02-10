@@ -50,11 +50,11 @@ body {
 }
 
 #sidebar a:hover {
-  color: #FFD700;
+  color: #ff6a00;
 }
 
 /* Responsive Sidebar */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   #sidebar {
     width: 100%;
     height: auto;
